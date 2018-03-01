@@ -1,5 +1,7 @@
 pipeline {
-  agent "SOME_NODE"
+  agent {
+    label: "SOME_NODE"
+  }
   
   triggers {
     pollSCM('')
@@ -11,7 +13,7 @@ pipeline {
     disableConcurrentBuilds()
     timeout(time: 1, unit: 'HOURS')
   }
-  
+
   stages {
     stage("Build AS") {
       steps {
