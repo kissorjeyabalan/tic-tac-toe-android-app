@@ -42,7 +42,7 @@ pipeline {
     }
 
     success {
-      androidApkUpload apkFilesPattern: '**/*.apk', deobfuscationFilesPattern: '**/mapping.txt', googleCredentialsId: 'api-6886201687893048698-196111', rolloutPercentage: '100%', trackName: 'beta'
+      androidApkUpload apkFilesPattern: '**/*-release.apk', deobfuscationFilesPattern: '**/mapping.txt', googleCredentialsId: 'api-6886201687893048698-196111', rolloutPercentage: '100%', trackName: 'beta'
       emailext attachmentsPattern: '**/*.apk', body: 'Url ${env.BUILD_URL}', recipientProviders: [[$class: 'CulpritsRecipientProvider']], subject: 'Completed Pipeline: ${currentBuild.fullDisplayName}'
     }
   }
