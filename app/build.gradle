@@ -53,5 +53,5 @@ dependencies {
 }
 
 afterEvaluate {
-    assembleRelease.dependsOn test, connectedAndroidTest
+    assembleRelease.dependsOn test
 }
