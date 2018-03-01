@@ -4,13 +4,21 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+def getVersionCodeTimestamp() {
+    def date = new Date()
+    def formattedDate = date.format('yyMMddHHmm')
+    def code = formattedDate.toInteger()
+    println sprintf("VersionCode: %d", code)
+    return code
+}
+
 android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "app.test.kristiania.no.testapplication"
         minSdkVersion 26
         targetSdkVersion 26
-        versionCode 1
+        versionCode getVersionCodeTimestamp()
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
