@@ -15,7 +15,7 @@ pipeline {
     disableConcurrentBuilds()
     timeout(time: 1, unit: 'HOURS')
   }
-  
+
   stages {
     stage("Notify Start") {
       steps {
@@ -25,6 +25,10 @@ pipeline {
 
     stage("Build AS") {
       steps {
+        script {
+          sh "df -h"
+        }
+
         script {
           sh "gradle assembleRelease --info --stacktrace"
         } 
