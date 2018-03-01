@@ -23,7 +23,7 @@ pipeline {
   stages {
     stage("Notify Start") {
       steps {
-        emailext body: '$DEFAULT_BODY', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider'], [$class: 'CulpritsRecipientProvider']], subject: '$DEFAULT_SUBJECT'
+        emailext body: 'Your app is being built!', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider'], [$class: 'CulpritsRecipientProvider']], subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - started!'
       }
     }
 
@@ -44,11 +44,11 @@ pipeline {
   
   post {
     failure {
-      emailext attachmentsPattern: '**/*.apk', attachLog: true, body: '$DEFAULT_BODY', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider'], [$class: 'CulpritsRecipientProvider']], subject: '$DEFAULT_SUBJECT'
+      emailext attachmentsPattern: '**/*.apk', attachLog: true, body: '$DEFAULT_CONTENT', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider'], [$class: 'CulpritsRecipientProvider']], subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - failure!'
     }
 
     success {
-      emailext attachmentsPattern: '**/*.apk', body: '$DEFAULT_BODY', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider'], [$class: 'CulpritsRecipientProvider']], subject: '$DEFAULT_SUBJECT'
+      emailext attachmentsPattern: '**/*.apk', body: '$DEFAULT_CONTENT', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider'], [$class: 'CulpritsRecipientProvider']], subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - success!'
     }
   }
 }
