@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'SOME_NODE'
+      label 'AWS_STANDARD_SLAVE'
     }
   }
 
