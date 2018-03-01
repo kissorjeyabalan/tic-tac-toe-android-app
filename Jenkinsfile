@@ -23,7 +23,7 @@ pipeline {
   stages {
     stage("Notify Start") {
       steps {
-        emailext recipientProviders: [[$class: 'CulpritsRecipientProvider']]
+        emailext body: '$DEFAULT_BODY', recipientProviders: [[$class: 'CulpritsRecipientProvider']], subject: '$DEFAULT_SUBJECT'
       }
     }
 
@@ -44,11 +44,11 @@ pipeline {
   
   post {
     failure {
-      emailext attachmentsPattern: '**/*.apk', attachLog: true, recipientProviders: [[$class: 'CulpritsRecipientProvider']]
+      emailext attachmentsPattern: '**/*.apk', attachLog: true, body: '$DEFAULT_BODY', recipientProviders: [[$class: 'CulpritsRecipientProvider']], subject: '$DEFAULT_SUBJECT'
     }
 
     success {
-      emailext attachmentsPattern: '**/*.apk', recipientProviders: [[$class: 'CulpritsRecipientProvider']]
+      emailext attachmentsPattern: '**/*.apk', body: '$DEFAULT_BODY', recipientProviders: [[$class: 'CulpritsRecipientProvider']], subject: '$DEFAULT_SUBJECT'
     }
   }
 }
