@@ -18,7 +18,9 @@ pipeline {
 
   stages {
     stage("Notify Start") {
-      emailext body: 'Url ${env.BUILD_URL}', recipientProviders: [[$class: 'RequesterRecipientProvider']], subject: 'Started Pipeline: ${currentBuild.fullDisplayName}'
+      steps {
+        emailext body: 'Url ${env.BUILD_URL}', recipientProviders: [[$class: 'RequesterRecipientProvider']], subject: 'Started Pipeline: ${currentBuild.fullDisplayName}'
+      }
     }
 
     stage("Build AS") {
