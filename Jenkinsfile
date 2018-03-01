@@ -1,8 +1,10 @@
 pipeline {
   agent {
-    label: "SOME_NODE"
+    node {
+      label 'SOME_NODE'
+    }
   }
-  
+
   triggers {
     pollSCM('')
     githubPush()
