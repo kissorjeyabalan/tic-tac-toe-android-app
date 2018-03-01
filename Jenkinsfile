@@ -20,7 +20,7 @@ pipeline {
     stage("Build AS") {
       steps {
         script {
-          sh "./gradlew assembleDebug --info --stacktrace"
+          sh "./gradlew assembleRelease --info --stacktrace"
         } 
       }
     }
