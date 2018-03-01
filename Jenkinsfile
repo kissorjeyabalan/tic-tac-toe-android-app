@@ -16,6 +16,10 @@ pipeline {
     timeout(time: 1, unit: 'HOURS')
   }
 
+  tools {
+    gradle "gradle"
+  }
+
   stages {
     stage("Notify Start") {
       steps {
@@ -25,10 +29,6 @@ pipeline {
 
     stage("Build AS") {
       steps {
-        script {
-          sh "df -h"
-        }
-
         script {
           sh "gradle assembleRelease --info --stacktrace"
         } 
