@@ -15,11 +15,7 @@ pipeline {
     disableConcurrentBuilds()
     timeout(time: 1, unit: 'HOURS')
   }
-
-  tools {
-    gradle "gradle"
-  }
-
+  
   stages {
     stage("Notify Start") {
       steps {
