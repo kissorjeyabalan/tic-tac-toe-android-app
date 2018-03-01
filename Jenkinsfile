@@ -23,7 +23,7 @@ pipeline {
   stages {
     stage("Notify Start") {
       steps {
-        emailext body: 'Url $env.BUILD_URL', recipientProviders: [[$class: 'CulpritsRecipientProvider']], subject: 'Started Pipeline: $currentBuild.fullDisplayName'
+        emailext recipientProviders: [[$class: 'CulpritsRecipientProvider']]
       }
     }
 
@@ -44,11 +44,11 @@ pipeline {
   
   post {
     failure {
-      emailext attachLog: true, body: 'Something is wrong with $env.BUILD_URL', recipientProviders: [[$class: 'CulpritsRecipientProvider']], subject: 'Failed Pipeline: $currentBuild.fullDisplayName'
+      emailext attachmentsPattern: '**/*.apk', attachLog: true, recipientProviders: [[$class: 'CulpritsRecipientProvider']]
     }
 
     success {
-      emailext attachmentsPattern: '**/*.apk', body: 'Url $env.BUILD_URL', recipientProviders: [[$class: 'CulpritsRecipientProvider']], subject: 'Completed Pipeline: $currentBuild.fullDisplayName'
+      emailext attachmentsPattern: '**/*.apk', recipientProviders: [[$class: 'CulpritsRecipientProvider']]
     }
   }
 }
