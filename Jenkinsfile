@@ -23,11 +23,11 @@ pipeline {
   stages {
     stage("Notify Start") {
       steps {
-        emailext body: 'Your app is building!', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider'], [$class: 'CulpritsRecipientProvider']], subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - started!'
+        emailext body: 'Your app is building!', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider'], [$class: 'CulpritsRecipientProvider']], subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - Started!'
       }
     }
 
-    stage("Build AS") {
+    stage("Build App") {
       steps {
         script {
           sh "gradle clean assembleRelease --info --stacktrace"
