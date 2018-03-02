@@ -23,7 +23,7 @@ pipeline {
   stages {
     stage("Notify Start") {
       steps {
-        emailext body: 'Your app is being built!', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider'], [$class: 'CulpritsRecipientProvider']], subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - started!'
+        emailext body: 'Your app is building!', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider'], [$class: 'CulpritsRecipientProvider']], subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - started!'
       }
     }
 
