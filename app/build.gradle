@@ -52,6 +52,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
 
-afterEvaluate {
-    assembleRelease.dependsOn test
+tasks.whenTaskAdded { task ->
+    if (task.name == 'assembleRelease') {
+        task.dependsOn('connectedAndroidTest')
+    }
 }
