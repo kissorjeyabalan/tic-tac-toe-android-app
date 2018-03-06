@@ -35,6 +35,12 @@ pipeline {
       }
     }
 
+    stage("Archive APK") {
+      steps {
+        archiveArtifacts allowEmptyArchive: true, artifacts: '**/*.apk', fingerprint: true, onlyIfSuccessful: true
+      }
+    }
+
     stage('Deploy') {
       steps {
         androidApkUpload apkFilesPattern: '**/*-release.apk', deobfuscationFilesPattern: '**/mapping.txt', googleCredentialsId: 'api-6886201687893048698-196111', rolloutPercentage: '100%', trackName: 'beta'
