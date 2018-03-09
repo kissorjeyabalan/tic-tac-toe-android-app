@@ -40,9 +40,9 @@ public class MainMenuFragment extends Fragment {
         return view;
     }
 
-    @OnClick(R.id.openHighScoreBtn)
+    @OnClick(R.id.btn_high_score)
     public void openHighScore() {
         Log.d(TAG, "openHighScore: called");
-        ((MainActivity) getActivity()).replaceFragment(HighScoreFragment.class);
+        ((MainActivity) getActivity()).replaceFragment(HighScoreFragment.class, true);
     }
 }
