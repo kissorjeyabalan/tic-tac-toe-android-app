@@ -4,11 +4,16 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.lang.reflect.Array;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,7 +23,8 @@ import no.woact.jeykis16.ui.activity.MainActivity;
 
 public class HighScoreFragment extends Fragment {
     public static final String TAG = "HighScoreFragment";
-    @BindView(R.id.one) public TextView tv;
+    @BindView(R.id.high_score_list) ListView lv;
+
     public HighScoreFragment() {
         // Required empty public constructor
     }
@@ -41,18 +47,22 @@ public class HighScoreFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_high_score, container, false);
         ButterKnife.bind(this, view);
-        tv.setSingleLine(false);
-        tv.setText("Dolorem expedita quasi dolor.\nIpsum animi sint quidem suscipit quam fugiat.\nDeleniti ipsa officiis dolorum ex magni.\nVel velit dolorem."
-                    + "Dolorem expedita quasi dolor.\nIpsum animi sint quidem suscipit quam fugiat.\nDeleniti ipsa officiis dolorum ex magni.\nVel velit dolorem."
-                    + "Dolorem expedita quasi dolor.\nIpsum animi sint quidem suscipit quam fugiat.\nDeleniti ipsa officiis dolorum ex magni.\nVel velit dolorem."
-                    + "Dolorem expedita quasi dolor.\nIpsum animi sint quidem suscipit quam fugiat.\nDeleniti ipsa officiis dolorum ex magni.\nVel velit dolorem."
-                    + "Dolorem expedita quasi dolor.\nIpsum animi sint quidem suscipit quam fugiat.\nDeleniti ipsa officiis dolorum ex magni.\nVel velit dolorem."
-                    + "\"Dolorem expedita quasi dolor.\\nIpsum animi sint quidem suscipit quam fugiat.\\nDeleniti ipsa officiis dolorum ex magni.\\nVel velit dolorem."
-                    + "Dolorem expedita quasi dolor.\nIpsum animi sint quidem suscipit quam fugiat.\nDeleniti ipsa officiis dolorum ex magni.\nVel velit dolorem."
-                    + "Dolorem expedita quasi dolor.\nIpsum animi sint quidem suscipit quam fugiat.\nDeleniti ipsa officiis dolorum ex magni.\nVel velit dolorem."
-                    + "Dolorem expedita quasi dolor.\nIpsum animi sint quidem suscipit quam fugiat.\nDeleniti ipsa officiis dolorum ex magni.\nVel velit dolorem."
-                    + "Dolorem expedita quasi dolor.\nIpsum animi sint quidem suscipit quam fugiat.\nDeleniti ipsa officiis dolorum ex magni.\nVel velit dolorem.");
+
+        String[] mobileArray = {"very","sad","hardcoded","bad",
+                "list","oh","well","grr"};
+        ArrayAdapter<String> phAdapter = new ArrayAdapter<String>(
+                getActivity(), android.R.layout.simple_list_item_1,
+                mobileArray
+        );
+
+        lv.setAdapter(phAdapter);
+        System.out.println("Tried to make list?");
+
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
 }
