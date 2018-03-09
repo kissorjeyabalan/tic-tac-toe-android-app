@@ -20,6 +20,6 @@ public class ExampleInstrumentedTest {
     void useAppContext() {
         // Context of the app under test.
         final Context appContext = InstrumentationRegistry.getTargetContext();
-        assertEquals("app.test.kristiania.no.testapplication", appContext.getPackageName());
+        assertEquals("no.woact.jeykis16", appContext.getPackageName());
     }
 }
