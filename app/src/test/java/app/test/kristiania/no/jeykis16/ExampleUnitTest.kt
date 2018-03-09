@@ -1,4 +1,4 @@
-package app.test.kristiania.no.testapplication
+package app.test.kristiania.no.jeykis16
 
 import org.junit.Test
 

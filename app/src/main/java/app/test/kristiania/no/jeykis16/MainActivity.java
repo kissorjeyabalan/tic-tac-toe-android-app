@@ -1,4 +1,4 @@
-package app.test.kristiania.no.testapplication;
+package app.test.kristiania.no.jeykis16;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

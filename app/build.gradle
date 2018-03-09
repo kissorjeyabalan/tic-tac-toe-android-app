@@ -15,7 +15,7 @@ def getVersionCodeTimestamp() {
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "app.test.kristiania.no.testapplication"
+        applicationId "app.test.kristiania.no.woact.jeykis16"
         minSdkVersion 24
         targetSdkVersion 26
         versionCode getVersionCodeTimestamp()
