@@ -1,4 +1,4 @@
-package app.test.no.woact.jeykis16
+package no.woact.jeykis16
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package app.test.no.woact.jeykis16;
+package no.woact.jeykis16;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
