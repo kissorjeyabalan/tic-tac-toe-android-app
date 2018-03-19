@@ -19,7 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.fragment.MainMenuFragment"></activity>
+        <activity android:name=".ui.fragment.MainMenuFragment" />
+        <activity android:name=".ui.activity.SinglePlayerActivity" />
+        <activity android:name=".ui.activity.MultiPlayerActivity"></activity>
     </application>
 
 </manifest>

@@ -1,25 +1,17 @@
 package no.woact.jeykis16.ui.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import java.lang.reflect.Array;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import no.woact.jeykis16.R;
-import no.woact.jeykis16.ui.activity.MainActivity;
 
 public class HighScoreFragment extends Fragment {
     public static final String TAG = "HighScoreFragment";

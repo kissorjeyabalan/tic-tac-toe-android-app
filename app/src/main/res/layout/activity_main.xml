@@ -4,16 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="no.woact.jeykis16.ui.activity.MainActivity"
-    android:background="@color/colorPrimary">
+    tools:context="no.woact.jeykis16.ui.activity.MainActivity">
 
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:textColor="@color/colorPrimaryDodge"
-        android:textSize="32sp"
+        android:textColor="@color/white"
+        android:textSize="64sp"
         android:gravity="center"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -7,4 +7,8 @@
     <string name="pvp">2P - Player versus player</string>
     <string name="pvc">1P - Player versus Computer</string>
     <string name="high_scores">High Scores</string>
+    <string name="play_vs_ai">Play vs. AI</string>
+    <string name="play_game">Play Game</string>
+    <string name="multiplayer">Multiplayer</string>
+    <string name="play_versus_ai">Play versus AI</string>
 </resources>

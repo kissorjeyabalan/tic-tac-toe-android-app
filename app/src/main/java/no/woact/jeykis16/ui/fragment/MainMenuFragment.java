@@ -45,4 +45,21 @@ public class MainMenuFragment extends Fragment {
         Log.d(TAG, "openHighScore: called");
         ((MainActivity) getActivity()).replaceFragment(HighScoreFragment.class, true);
     }
+
+    @OnClick(R.id.btn_one_player)
+    public void startPlayerVersusAi() {
+        setPlayerNames(false);
+    }
+
+    @OnClick(R.id.btn_two_player)
+    public void startPlayerVersusPlayer() {
+        setPlayerNames(true);
+    }
+
+    private void setPlayerNames(boolean multiplayer) {
+        Log.d(TAG, "setPlayerNames: called");
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("multiplayer", multiplayer);
+        ((MainActivity) getActivity()).replaceFragment(PlayerSelectFragment.class, true, bundle);
+    }
 }
