@@ -1,13 +1,46 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="no.woact.jeykis16.ui.fragment.PlayerSelectFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="no.woact.jeykis16.ui.fragment.PlayerSelectFragment"
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/playerOneInputLayout"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Player one name"
+            android:textSize="12sp"
+            android:inputType="text"
+            android:layout_gravity="center"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/playerTwoName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Player two name"
+            android:textSize="12sp"
+            android:inputType="text"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
+    </android.support.design.widget.TextInputLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Start Game"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"/>
+</LinearLayout>
