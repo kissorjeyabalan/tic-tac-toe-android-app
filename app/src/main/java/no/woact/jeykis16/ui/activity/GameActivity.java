@@ -3,8 +3,10 @@ package no.woact.jeykis16.ui.activity;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import no.woact.jeykis16.R;
+import no.woact.jeykis16.game.GameManager;
 import no.woact.jeykis16.ui.fragment.BoardFragment;
 import no.woact.jeykis16.ui.fragment.GameStatusFragment;
 
@@ -24,7 +26,16 @@ public class GameActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {}
+
+    @Override
+    public void onGameHasEnded(GameManager.PlayerType winner) {
+        Toast.makeText(this, winner + " has won the game!", Toast.LENGTH_SHORT).show();
     }
 }

@@ -16,6 +16,7 @@ public class GameManager {
     private ImageButton[][] gridButtons;
     private PlayerType[][] gameState;
     private PlayerType currentPlayer;
+    private PlayerType winner;
     private boolean gameFinished;
     private boolean draw;
 
@@ -24,7 +25,7 @@ public class GameManager {
         this.playerOneName = playerOne;
         this.playerTwoName = playerTwo;
         this.currentPlayer = PlayerType.CROSS;
-        this.draw = false;
+        this.winner = PlayerType.NONE;
 
         gameState = new PlayerType[3][3];
         for (int i = 0; i < 3; i++) {
@@ -51,6 +52,9 @@ public class GameManager {
                                 }
                             } else {
                                 gameFinished = true;
+                                if (!draw) {
+                                    winner = currentPlayer;
+                                }
                             }
 
                         } else {
@@ -80,22 +84,10 @@ public class GameManager {
     }
 
     private boolean checkGameFinished() {
-        if (checkRowWin()) {
-            Log.i("WIN", "checkGameFinished: Row Win");
-            return true;
-        } else if (checkColWin()) {
-            Log.i("WIN", "checkGameFinished: Column Win");
-            return true;
-        } else if (checkDiagonalWin()) {
-            Log.i("WIN", "checkGameFinished: Diagonal Win");
-            return true;
-        } else if (checkDraw()){
-            Log.i("WIN", "checkGameFinished: Draw");
-            draw = true;
-            return true;
-        } else {
-            Log.i(TAG, "checkGameFinished: nothing happened");
-        }
+        if (checkRowWin()) return true;
+        else if (checkColWin()) return true;
+        else if (checkDiagonalWin()) return true;
+        else if (checkDraw()) return true;
         return false;
     }
 
@@ -141,7 +133,11 @@ public class GameManager {
                 }
             }
         }
-        return occupiedSpaces == (gridButtons.length * 3);
+        if (occupiedSpaces == (gridButtons.length * 3)) {
+            draw = true;
+            return true;
+        }
+        return false;
     }
 
     public void setGridButtons(ImageButton[][] gridButtons) {
@@ -152,8 +148,8 @@ public class GameManager {
         return isMultiplayer;
     }
 
-    public boolean isDraw() {
-        return draw;
+    public PlayerType getWinner() {
+        return winner;
     }
 
     public boolean isGameFinished() {
