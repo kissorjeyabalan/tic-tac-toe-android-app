@@ -1,5 +1,6 @@
 package no.woact.jeykis16.ui.activity;
 
+import android.app.Fragment;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import no.woact.jeykis16.ui.fragment.GameStatusFragment;
 public class GameActivity extends AppCompatActivity implements
         GameStatusFragment.OnFragmentInteractionListener,
         BoardFragment.OnFragmentInteractionListener {
+    private GameStatusFragment gameStatusFragment;
+    private BoardFragment boardFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +24,8 @@ public class GameActivity extends AppCompatActivity implements
 
         Bundle args = getIntent().getExtras().getBundle("bundle");
         getFragmentManager().beginTransaction()
-                .add(R.id.gameFragHolder, GameStatusFragment.newInstance(args))
-                .add(R.id.gameFragHolder, BoardFragment.newInstance(args)).commit();
+                .add(R.id.gameFragHolder, gameStatusFragment = GameStatusFragment.newInstance(args))
+                .add(R.id.gameFragHolder, boardFragment = BoardFragment.newInstance(args)).commit();
     }
 
     @Override
@@ -37,5 +40,7 @@ public class GameActivity extends AppCompatActivity implements
     @Override
     public void onGameHasEnded(GameManager.PlayerType winner) {
         Toast.makeText(this, winner + " has won the game!", Toast.LENGTH_SHORT).show();
+        gameStatusFragment.stopTimer();
     }
+
 }

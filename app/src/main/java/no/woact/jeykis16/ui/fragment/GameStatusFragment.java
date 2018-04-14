@@ -4,9 +4,11 @@ import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Chronometer;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -22,11 +24,12 @@ import no.woact.jeykis16.R;
  * create an instance of this fragment.
  */
 public class GameStatusFragment extends Fragment {
-    @BindView(R.id.playerVersusName) public TextView tvPlayerVersus;
+    @BindView(R.id.playerOneScore) public TextView tvPlayerOneScore;
+    @BindView(R.id.playerTwoScore) public TextView tvPlayerTwoScore;
+    @BindView(R.id.gameDurationChronometer) public Chronometer gameDurationChrono;
     private OnFragmentInteractionListener mListener;
     private String playerOne;
     private String playerTwo;
-    private boolean isMultiplayer;
 
     public GameStatusFragment() {
         // Required empty public constructor
@@ -45,7 +48,6 @@ public class GameStatusFragment extends Fragment {
         if (getArguments() != null) {
             this.playerOne = getArguments().getString("playerOne");
             this.playerTwo = getArguments().getString("playerTwo");
-            this.isMultiplayer = getArguments().getBoolean("multiplayer");
         }
     }
 
@@ -54,9 +56,16 @@ public class GameStatusFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_game_status, container, false);
         ButterKnife.bind(this, view);
-        String text = playerOne + " vs " + playerTwo;
-        tvPlayerVersus.setText(text);
+        tvPlayerOneScore.setText("0");
+        tvPlayerTwoScore.setText("0");
+
+        gameDurationChrono.start();
+
         return view;
+    }
+
+    public void stopTimer() {
+        gameDurationChrono.stop();
     }
 
     @Override
@@ -75,7 +84,6 @@ public class GameStatusFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

@@ -8,16 +8,57 @@
     android:layout_marginTop="15dp"
     android:layout_marginBottom="5dp">
 
-    <TextView
-        android:id="@+id/playerVersusName"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:layout_marginBottom="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp"
+        android:gravity="center_horizontal">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/cross"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/cross_icon"
+            android:layout_marginEnd="5dp"
+            android:layout_gravity="center_vertical"
+            />
+        <TextView
+            android:id="@+id/playerOneScore"
+            android:text="12"
+            android:textSize="25sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"/>
+        <TextView
+            android:text="@string/em_dash"
+            android:textSize="25sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"/>
+        <TextView
+            android:id="@+id/playerTwoScore"
+            android:text="12"
+            android:textSize="25sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/circle"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/circle_icon"
+            android:layout_marginEnd="5dp"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+    <Chronometer
+        android:id="@+id/gameDurationChronometer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TIMER"
-        android:textSize="25sp"/>
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="@color/colorWhite" />
 
 </LinearLayout>

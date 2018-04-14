@@ -16,4 +16,8 @@
     <string name="err_player_same_name">Both players can not have the same name!</string>
     <string name="bot_name">tickyTheBot</string>
     <string name="tictactoe_canvas">TicTacToe Canvas</string>
+    <string name="cross_icon">Cross Icon</string>
+    <string name="zero">0</string>
+    <string name="em_dash">—</string>
+    <string name="circle_icon">Circle Icon</string>
 </resources>
