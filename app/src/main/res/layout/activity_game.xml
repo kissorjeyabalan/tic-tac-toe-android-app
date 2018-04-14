@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="no.woact.jeykis16.ui.activity.GameActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:background="@color/colorBackground">
 
 </LinearLayout>

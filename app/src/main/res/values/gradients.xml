@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="gradients">
-        <item>#ffe259|#ffa751</item>
-        <item>#acb6e5|#86fde8</item>
-        <item>#536976|#292E49</item>
-        <item>#BBD2C5|#536976|#292E49</item>
-        <item>#B79891|#94716B</item>
-        <item>#BBD2C5|#536976</item>
-        <item>#00467F|#A5CC82</item>
-        <item>#1488CC|#1488CC</item>
+        <item>#FFB75E|#ED8F03</item>
+        <item>#76b852|#8DC26F</item>
+        <item>#673AB7|#512DA8</item>
+        <item>#f46b45|#eea849</item>
+        <item>#005C97|#363795</item>
+        <item>#e53935|#e35d5b</item>
+        <item>#2c3e50|#3498db</item>
     </array>
 </resources>

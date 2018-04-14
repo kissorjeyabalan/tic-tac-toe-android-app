@@ -16,10 +16,8 @@ public class GameActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
         Bundle args = getIntent().getExtras().getBundle("bundle");
-
-        getWindow().getDecorView().setBackground(MainActivity.APP_COLOR);
-
         getFragmentManager().beginTransaction()
                 .add(R.id.gameFragHolder, GameStatusFragment.newInstance(args))
                 .add(R.id.gameFragHolder, BoardFragment.newInstance(args)).commit();

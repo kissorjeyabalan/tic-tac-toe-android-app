@@ -16,8 +16,6 @@ import no.woact.jeykis16.R;
 import no.woact.jeykis16.ui.fragment.MainMenuFragment;
 
 public class MainActivity extends AppCompatActivity {
-    public static final Random RANDOM = new Random();
-    public static GradientDrawable APP_COLOR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +23,6 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(MainMenuFragment.class, false);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        APP_COLOR = getRandomGradientDrawable(this);
-        getWindow().getDecorView().setBackground(APP_COLOR);
     }
 
 
@@ -63,18 +58,5 @@ public class MainActivity extends AppCompatActivity {
             tx.addToBackStack(null);
         }
         tx.commit();
-    }
-
-    public static GradientDrawable getRandomGradientDrawable(Context ctx) {
-        String[] gradients = ctx.getResources().getStringArray(R.array.gradients);
-        String[] randomGradient = gradients[RANDOM.nextInt(gradients.length)].split("\\|");
-        int[] colors = new int[randomGradient.length];
-        for (int i = 0; i < colors.length; i++) {
-            colors[i] = Color.parseColor(randomGradient[i]);
-        }
-
-        GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
-        gd.setCornerRadius(0f);
-        return gd;
     }
 }

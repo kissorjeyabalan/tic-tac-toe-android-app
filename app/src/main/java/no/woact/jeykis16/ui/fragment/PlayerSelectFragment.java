@@ -64,7 +64,6 @@ public class PlayerSelectFragment extends Fragment {
             args.putString("playerTwo", playerTwoLayout.getEditText().getText().toString());
             intent.putExtra("bundle", args);
             getActivity().startActivity(intent);
-            getActivity().finish();
         }
     }
 
