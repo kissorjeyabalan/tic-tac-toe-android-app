@@ -1,6 +1,5 @@
 package no.woact.jeykis16.ui.activity;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,9 +18,11 @@ public class GameActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_game);
         Bundle args = getIntent().getExtras().getBundle("bundle");
 
+        getWindow().getDecorView().setBackground(MainActivity.APP_COLOR);
+
         getFragmentManager().beginTransaction()
                 .add(R.id.gameFragHolder, GameStatusFragment.newInstance(args))
-                .add(R.id.gameFragHolder, BoardFragment.newInstance(args.getBoolean("multiplayer"))).commit();
+                .add(R.id.gameFragHolder, BoardFragment.newInstance(args)).commit();
     }
 
     @Override
