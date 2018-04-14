@@ -11,4 +11,9 @@
     <string name="play_game">Play Game</string>
     <string name="multiplayer">Multiplayer</string>
     <string name="play_versus_ai">Play versus AI</string>
+    <string name="err_player_one_name">You have to type in a name for player one!</string>
+    <string name="err_player_two_name">You have to type in a name for player two!</string>
+    <string name="err_player_same_name">Both players can not have the same name!</string>
+    <string name="bot_name">tickyTheBot</string>
+    <string name="tictactoe_canvas">TicTacToe Canvas</string>
 </resources>

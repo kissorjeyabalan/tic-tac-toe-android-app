@@ -1,0 +1,15 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gameBoardFragment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="no.woact.jeykis16.ui.fragment.BoardFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/boardCanvas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/tictactoe_canvas"/>
+
+</FrameLayout>

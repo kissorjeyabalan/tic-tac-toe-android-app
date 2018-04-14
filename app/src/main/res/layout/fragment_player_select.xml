@@ -7,36 +7,48 @@
     android:orientation="vertical"
     android:gravity="center">
 
-
+    <TextView
+        android:id="@+id/generalPlayerNameError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/colorErrorRed"/>
     <android.support.design.widget.TextInputLayout
         android:id="@+id/playerOneInputLayout"
         android:layout_width="250dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:hintTextAppearance="@style/WhiteLabel"
+        android:textColorHint="@color/colorWhite">
         <EditText
+            android:id="@+id/playerOneNameField"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:hint="Player one name"
+            android:hint="Player one"
             android:textSize="12sp"
             android:inputType="text"
             android:layout_gravity="center"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"/>
+            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorWhite"/>
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/playerTwoName"
+        android:id="@+id/playerTwoInputLayout"
         android:layout_width="250dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:hintTextAppearance="@style/WhiteLabel"
+        android:textColorHint="@color/colorWhite">
         <EditText
+            android:id="@+id/playerTwoNameField"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Player two name"
             android:textSize="12sp"
             android:inputType="text"
             android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"/>
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"/>
     </android.support.design.widget.TextInputLayout>
     <Button
+        android:id="@+id/startGameBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"

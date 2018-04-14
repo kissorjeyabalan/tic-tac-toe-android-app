@@ -3,18 +3,14 @@ package no.woact.jeykis16.ui.activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import java.util.Random;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import no.woact.jeykis16.R;
 import no.woact.jeykis16.ui.fragment.MainMenuFragment;
 
