@@ -3,13 +3,8 @@ package no.woact.jeykis16.ui.activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import java.util.Random;
 
 import butterknife.ButterKnife;
 import no.woact.jeykis16.R;

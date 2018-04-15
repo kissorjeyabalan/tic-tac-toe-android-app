@@ -2,6 +2,8 @@ package no.woact.jeykis16.ui.fragment;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -9,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Chronometer;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -24,8 +27,12 @@ import no.woact.jeykis16.R;
  * create an instance of this fragment.
  */
 public class GameStatusFragment extends Fragment {
+    @BindView(R.id.playerOneName) public TextView tvPlayerOneName;
+    @BindView(R.id.playerTwoName) public TextView tvPlayerTwoName;
     @BindView(R.id.playerOneScore) public TextView tvPlayerOneScore;
     @BindView(R.id.playerTwoScore) public TextView tvPlayerTwoScore;
+    @BindView(R.id.playerOneIcon) public ImageView playerOneIcon;
+    @BindView(R.id.playerTwoIcon) public ImageView playerTwoIcon;
     @BindView(R.id.gameDurationChronometer) public Chronometer gameDurationChrono;
     private OnFragmentInteractionListener mListener;
     private String playerOne;
@@ -56,16 +63,41 @@ public class GameStatusFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_game_status, container, false);
         ButterKnife.bind(this, view);
+        tvPlayerOneName.setText(playerOne);
+        tvPlayerTwoName.setText(playerTwo);
         tvPlayerOneScore.setText("0");
         tvPlayerTwoScore.setText("0");
-
-        gameDurationChrono.start();
 
         return view;
     }
 
+    public void startTimer() {
+        gameDurationChrono.setBase(SystemClock.elapsedRealtime());
+        gameDurationChrono.start();
+    }
+
     public void stopTimer() {
         gameDurationChrono.stop();
+    }
+
+    public void swapIcons(int currentRound) {
+        if (currentRound == 0) {
+            playerOneIcon.setImageResource(R.drawable.cross);
+            playerTwoIcon.setImageResource(R.drawable.circle);
+        } else {
+            playerOneIcon.setImageResource(R.drawable.circle);
+            playerTwoIcon.setImageResource(R.drawable.cross);
+        }
+    }
+
+    public void incrementScore(String winner) {
+        if (playerOne.equals(winner)) {
+            int currScore = Integer.parseInt(tvPlayerOneScore.getText().toString());
+            tvPlayerOneScore.setText(String.valueOf(currScore + 1));
+        } else {
+            int currScore = Integer.parseInt(tvPlayerTwoScore.getText().toString());
+            tvPlayerTwoScore.setText(String.valueOf(currScore + 1));
+        }
     }
 
     @Override
@@ -86,7 +118,5 @@ public class GameStatusFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 }

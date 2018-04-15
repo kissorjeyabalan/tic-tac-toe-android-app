@@ -14,10 +14,16 @@
     <string name="err_player_one_name">You have to type in a name for player one!</string>
     <string name="err_player_two_name">You have to type in a name for player two!</string>
     <string name="err_player_same_name">Both players can not have the same name!</string>
-    <string name="bot_name">tickyTheBot</string>
+    <string name="bot_name">TTTBot</string>
     <string name="tictactoe_canvas">TicTacToe Canvas</string>
     <string name="cross_icon">Cross Icon</string>
     <string name="zero">0</string>
     <string name="em_dash">—</string>
     <string name="circle_icon">Circle Icon</string>
+    <string name="xxx_vs_xxx">XXX versus XXX</string>
+    <string name="ready_to_start">Are you ready to start the game?</string>
+    <string name="game_over">Game Over!</string>
+    <string name="tie_game">The game was a tie. No winners!</string>
+    <string name="won_the_game">won the game!</string>
+    <string name="play_again">Play Again</string>
 </resources>

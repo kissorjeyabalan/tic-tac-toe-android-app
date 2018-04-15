@@ -1,19 +1,21 @@
 package no.woact.jeykis16.ui.activity;
 
-import android.app.Fragment;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import no.woact.jeykis16.R;
-import no.woact.jeykis16.game.GameManager;
+import no.woact.jeykis16.game.PlayerType;
 import no.woact.jeykis16.ui.fragment.BoardFragment;
 import no.woact.jeykis16.ui.fragment.GameStatusFragment;
+import no.woact.jeykis16.ui.fragment.dialog.GameOverDialogFragment;
+import no.woact.jeykis16.ui.fragment.dialog.PlayDialogFragment;
 
 public class GameActivity extends AppCompatActivity implements
         GameStatusFragment.OnFragmentInteractionListener,
-        BoardFragment.OnFragmentInteractionListener {
+        BoardFragment.OnFragmentInteractionListener,
+        PlayDialogFragment.OnFragmentInteractionListener,
+        GameOverDialogFragment.OnFragmentInteractionListener {
     private GameStatusFragment gameStatusFragment;
     private BoardFragment boardFragment;
 
@@ -35,12 +37,21 @@ public class GameActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {}
-
-    @Override
-    public void onGameHasEnded(GameManager.PlayerType winner) {
-        Toast.makeText(this, winner + " has won the game!", Toast.LENGTH_SHORT).show();
+    public void onGameHasEnded(String winner) {
+        GameOverDialogFragment godf = GameOverDialogFragment.newInstance(winner);
         gameStatusFragment.stopTimer();
+        gameStatusFragment.incrementScore(winner);
+        godf.show(getFragmentManager(), "gameOverFragment");
     }
 
+    @Override
+    public void startGame() {
+        gameStatusFragment.startTimer();
+    }
+
+    @Override
+    public void onPlayAgain() {
+        int round = boardFragment.newRound();
+        gameStatusFragment.swapIcons(round);
+    }
 }

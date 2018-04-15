@@ -1,6 +1,7 @@
 package no.woact.jeykis16.ui.fragment;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,7 +16,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import no.woact.jeykis16.R;
 import no.woact.jeykis16.game.GameManager;
+import no.woact.jeykis16.game.PlayerType;
 import no.woact.jeykis16.ui.activity.MainActivity;
+import no.woact.jeykis16.ui.fragment.dialog.PlayDialogFragment;
 
 
 /**
@@ -63,8 +66,8 @@ public class BoardFragment extends Fragment {
             String playerOne = getArguments().getString("playerOne");
             String playerTwo = getArguments().getString("playerTwo");
             gameManager = new GameManager(isMultiplayer, playerOne, playerTwo);
+            gridButtons = new ImageButton[3][3];
         }
-        gridButtons = new ImageButton[3][3];
     }
 
     @Override
@@ -72,11 +75,21 @@ public class BoardFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_board, container, false);
         ButterKnife.bind(this, view);
-
-        createImageButtons();
-        gameManager.setGridButtons(gridButtons);
-
+        newRound();
         return view;
+    }
+
+    public int newRound() {
+        boardGrid.removeAllViews();
+        createImageButtons();
+        gameManager.newRound(gridButtons);
+        showReadyDialog();
+        return gameManager.getCurrentRound();
+    }
+
+    private void showReadyDialog() {
+        PlayDialogFragment.newInstance(gameManager.getPlayerOneName(), gameManager.getPlayerTwoName())
+                .show(getFragmentManager(), "readyDialog");
     }
 
     private void createImageButtons() {
@@ -123,8 +136,6 @@ public class BoardFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-        void onGameHasEnded(GameManager.PlayerType winner);
+        void onGameHasEnded(String winner);
     }
 }
