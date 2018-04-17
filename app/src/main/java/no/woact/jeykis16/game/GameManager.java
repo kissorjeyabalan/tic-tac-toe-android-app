@@ -10,23 +10,28 @@ import no.woact.jeykis16.R;
 import static no.woact.jeykis16.ui.fragment.HighScoreFragment.TAG;
 
 public class GameManager {
-    private boolean isMultiplayer;
+    private boolean multiplayer;
     private String playerOneName;
     private String playerTwoName;
     private ImageButton[][] gridButtons;
     private PlayerType[][] gameState;
     private PlayerType currentPlayer;
+    private ArtificialPlayer ai;
     private String winner;
     private boolean gameFinished;
     private boolean draw;
     private int currentRound = 0;
 
-    public GameManager(boolean isMultiplayer, String playerOne, String playerTwo) {
-        this.isMultiplayer = isMultiplayer;
+    public GameManager(boolean multiplayer, String playerOne, String playerTwo) {
+        this.multiplayer = multiplayer;
         this.playerOneName = playerOne;
         this.playerTwoName = playerTwo;
         this.currentPlayer = PlayerType.CROSS;
         this.winner = null;
+
+        if (!isMultiplayer()) {
+            ai = new ArtificialPlayer();
+        }
 
         gameState = new PlayerType[3][3];
         resetGameState();
@@ -43,9 +48,16 @@ public class GameManager {
         this.gameFinished = false;
         this.draw = false;
         setGridButtons(gridButtons);
+
+        if (!isMultiplayer()) {
+            ai.setGridButtons(gridButtons);
+            if (getCurrentRound() == 1) {
+                makeMove(ai.getMove(gameState, currentPlayer), true);
+            }
+        }
     }
 
-    public void makeMove(ImageButton gridBtn) {
+    public void makeMove(ImageButton gridBtn, boolean botMove) {
         if (!isGameFinished()) {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
@@ -57,8 +69,8 @@ public class GameManager {
                             if (!checkGameFinished()) {
                                 Log.i(TAG, "makeMove: Game not finished for " + currentPlayer);
                                 swapCurrentPlayer();
-                                if (!isMultiplayer) {
-                                    // TODO: AI make move
+                                if (!isMultiplayer() && !botMove) {
+                                    makeMove(ai.getMove(gameState, currentPlayer), true);
                                 }
                             } else {
                                 gameFinished = true;
@@ -106,69 +118,23 @@ public class GameManager {
         }
     }
 
+
     private boolean checkGameFinished() {
-        if (checkRowWin()) return true;
-        else if (checkColWin()) return true;
-        else if (checkDiagonalWin()) return true;
-        else if (checkDraw()) return true;
-        return false;
-    }
-
-    private boolean checkRowWin() {
-        for (int i = 0; i < gameState.length; i++) {
-            if (gameState[i][0].equals(currentPlayer) &&
-                gameState[i][1].equals(currentPlayer) &&
-                gameState[i][2].equals(currentPlayer)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean checkColWin() {
-        for (int i = 0; i < gameState.length; i++) {
-            if (gameState[0][i].equals(currentPlayer) &&
-                gameState[1][i].equals(currentPlayer) &&
-                gameState[2][i].equals(currentPlayer)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean checkDiagonalWin() {
-        return
-            ((gameState[0][0].equals(currentPlayer) &&
-                    gameState[1][1].equals(currentPlayer) &&
-                    gameState[2][2].equals(currentPlayer)) || (
-                            gameState[2][0].equals(currentPlayer)  &&
-                            gameState[1][1].equals(currentPlayer) &&
-                            gameState[0][2].equals(currentPlayer)
-            ));
-    }
-
-    private boolean checkDraw() {
-        int occupiedSpaces = 0;
-        for (int i = 0; i < gameState.length; i++) {
-            for (int j = 0; j < gameState[i].length; j++) {
-                if (gameState[i][j] != PlayerType.NONE) {
-                    occupiedSpaces++;
-                }
-            }
-        }
-        if (occupiedSpaces == (gridButtons.length * 3)) {
+        if (GameHelper.moveEndsGame(gameState, currentPlayer)) return true;
+        if (GameHelper.checkDraw(gameState)) {
             draw = true;
             return true;
         }
         return false;
     }
 
+
     public void setGridButtons(ImageButton[][] gridButtons) {
         this.gridButtons = gridButtons;
     }
 
     public boolean isMultiplayer() {
-        return isMultiplayer;
+        return multiplayer;
     }
 
     public String getPlayerOneName() {
