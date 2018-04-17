@@ -17,6 +17,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import no.woact.jeykis16.R;
+import no.woact.jeykis16.db.AppDatabase;
 import no.woact.jeykis16.db.entity.Player;
 import no.woact.jeykis16.ui.adapter.HighScoreAdapter;
 
@@ -44,14 +45,7 @@ public class HighScoreFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_high_score, container, false);
         ButterKnife.bind(this, view);
 
-        List<Player> players = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            Player player = new Player();
-            player.setUsername("Player " + i);
-            player.setWins(i + 1);
-            player.setDefeats(i);
-            players.add(player);
-        }
+        List<Player> players = AppDatabase.getAppDatabase(view.getContext()).playerDao().getAllSortedByWinsDesc();
         highScoreRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         highScoreRecyclerView.setAdapter(new HighScoreAdapter(players));
 

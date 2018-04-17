@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import no.woact.jeykis16.R;
+import no.woact.jeykis16.db.AppDatabase;
+import no.woact.jeykis16.db.entity.Player;
 import no.woact.jeykis16.game.PlayerType;
 import no.woact.jeykis16.ui.fragment.BoardFragment;
 import no.woact.jeykis16.ui.fragment.GameStatusFragment;
