@@ -2,7 +2,7 @@ package no.woact.jeykis16.game;
 
 public class GameHelper {
     public static final int GRID_LENGTH = 9;
-    
+
     public static boolean checkRowWin(PlayerType[][] gameState, PlayerType player) {
         for (int i = 0; i < gameState.length; i++) {
             if (gameState[i][0].equals(player) &&
