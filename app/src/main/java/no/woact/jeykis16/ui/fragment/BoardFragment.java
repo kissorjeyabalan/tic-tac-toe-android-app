@@ -39,7 +39,7 @@ public class BoardFragment extends Fragment {
     public View.OnClickListener gridImageButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            gameManager.makeMove((ImageButton) view);
+            gameManager.makeMove((ImageButton) view, false);
             if (gameManager.isGameFinished()) {
                 mListener.onGameHasEnded(gameManager.getWinner());
             }

@@ -94,7 +94,7 @@ public class GameStatusFragment extends Fragment {
         if (playerOne.equals(winner)) {
             int currScore = Integer.parseInt(tvPlayerOneScore.getText().toString());
             tvPlayerOneScore.setText(String.valueOf(currScore + 1));
-        } else {
+        } else if (playerTwo.equals(winner)) {
             int currScore = Integer.parseInt(tvPlayerTwoScore.getText().toString());
             tvPlayerTwoScore.setText(String.valueOf(currScore + 1));
         }

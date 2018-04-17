@@ -4,7 +4,14 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Window;
+import android.view.WindowManager;
+
+import java.util.Objects;
 
 import no.woact.jeykis16.R;
 
@@ -27,7 +34,7 @@ public class GameOverDialogFragment extends DialogFragment {
         setCancelable(false);
         adb.setTitle(R.string.game_over);
         if (winner != null) {
-            adb.setMessage(winner + getString(R.string.won_the_game));
+            adb.setMessage(winner + " " + getString(R.string.won_the_game));
         } else {
             adb.setMessage(R.string.tie_game);
         }
