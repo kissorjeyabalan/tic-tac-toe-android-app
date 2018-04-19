@@ -26,4 +26,10 @@
     <string name="tie_game">The game was a tie. No winners!</string>
     <string name="won_the_game">won the game!</string>
     <string name="play_again">Play Again</string>
+    <string name="player">Player</string>
+    <string name="wins">Wins</string>
+    <string name="defeats">Defeats</string>
+    <string name="whatever_play_game">Whatever, play game!</string>
+    <string name="ready_to_play">Ready to play?</string>
+    <string name="did_you_know">Did you know...</string>
 </resources>
