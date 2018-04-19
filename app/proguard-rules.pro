@@ -22,7 +22,7 @@
 
 -dontwarn okio.**
 -dontwarn javax.annotation.**
--dontnote retrofit2.Platform
--dontwarn retrofit2.Platform$Java8
+-dontwarn org.conscrypt.**
+-dontwarn retrofit2.**
 -keepattributes Signature
 -keepattributes Exceptions
