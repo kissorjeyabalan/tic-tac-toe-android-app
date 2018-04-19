@@ -5,10 +5,17 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import butterknife.ButterKnife;
 import no.woact.jeykis16.R;
+import no.woact.jeykis16.http.WebHelper;
+import no.woact.jeykis16.http.entity.CatFact;
+import no.woact.jeykis16.http.service.CatFactsService;
 import no.woact.jeykis16.ui.fragment.MainMenuFragment;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 

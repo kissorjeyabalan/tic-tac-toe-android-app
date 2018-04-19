@@ -2,9 +2,6 @@ package no.woact.jeykis16.ui.fragment;
 
 import android.app.Fragment;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
@@ -36,7 +33,6 @@ public class GameStatusFragment extends Fragment {
     @BindView(R.id.playerOneIcon) public ImageView playerOneIcon;
     @BindView(R.id.playerTwoIcon) public ImageView playerTwoIcon;
     @BindView(R.id.gameDurationChronometer) public Chronometer gameDurationChrono;
-    private OnFragmentInteractionListener mListener;
     private AppDatabase db;
     private Player playerOne;
     private Player playerTwo;
@@ -117,25 +113,5 @@ public class GameStatusFragment extends Fragment {
             playerOne.setDefeats(playerOne.getDefeats() + 1);
         }
         db.playerDao().updatePlayers(playerOne, playerTwo);
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    public interface OnFragmentInteractionListener {
     }
 }

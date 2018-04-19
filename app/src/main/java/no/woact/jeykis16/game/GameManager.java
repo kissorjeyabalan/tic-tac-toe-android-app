@@ -38,6 +38,15 @@ public class GameManager {
 
     }
 
+    public void startGame() {
+        if (!isMultiplayer()) {
+            ai.setGridButtons(gridButtons);
+            if (getCurrentRound() == 1) {
+                makeMove(ai.getMove(gameState, currentPlayer), true);
+            }
+        }
+    }
+
     public void newRound(ImageButton[][] gridButtons) {
         if (gameFinished) {
             incrementRound();
@@ -48,13 +57,6 @@ public class GameManager {
         this.gameFinished = false;
         this.draw = false;
         setGridButtons(gridButtons);
-
-        if (!isMultiplayer()) {
-            ai.setGridButtons(gridButtons);
-            if (getCurrentRound() == 1) {
-                makeMove(ai.getMove(gameState, currentPlayer), true);
-            }
-        }
     }
 
     public void makeMove(ImageButton gridBtn, boolean botMove) {
@@ -160,4 +162,5 @@ public class GameManager {
     public boolean isGameFinished() {
         return gameFinished;
     }
+
 }

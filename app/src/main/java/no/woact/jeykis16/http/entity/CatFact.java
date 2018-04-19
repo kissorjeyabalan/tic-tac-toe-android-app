@@ -1,8 +1,10 @@
-package no.woact.jeykis16.entity;
+package no.woact.jeykis16.http.entity;
+
+import com.google.gson.annotations.Expose;
 
 public class CatFact {
-    private String fact;
-    private int length;
+    @Expose private String fact;
+    @Expose private Integer length;
 
     public CatFact() {}
 
@@ -14,11 +16,11 @@ public class CatFact {
         this.fact = fact;
     }
 
-    public int getLength() {
+    public Integer getLength() {
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength(Integer length) {
         this.length = length;
     }
 }

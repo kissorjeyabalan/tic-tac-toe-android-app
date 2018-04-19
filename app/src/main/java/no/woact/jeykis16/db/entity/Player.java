@@ -21,6 +21,7 @@ public class Player {
         setDefeats(0);
     }
 
+    @NonNull
     public String getUsername() {
         return username;
     }
@@ -33,7 +34,7 @@ public class Player {
         return defeats;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(@NonNull String username) {
         this.username = username;
     }
 

@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +13,20 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import no.woact.jeykis16.R;
 import no.woact.jeykis16.game.GameManager;
 import no.woact.jeykis16.game.PlayerType;
+import no.woact.jeykis16.http.WebHelper;
+import no.woact.jeykis16.http.entity.CatFact;
 import no.woact.jeykis16.ui.activity.MainActivity;
 import no.woact.jeykis16.ui.fragment.dialog.PlayDialogFragment;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -89,7 +97,7 @@ public class BoardFragment extends Fragment {
 
     private void showReadyDialog() {
         PlayDialogFragment.newInstance(gameManager.getPlayerOneName(), gameManager.getPlayerTwoName())
-                .show(getFragmentManager(), "readyDialog");
+            .show(getFragmentManager(), "readyDialog");
     }
 
     private void createImageButtons() {
@@ -117,6 +125,10 @@ public class BoardFragment extends Fragment {
         }
     }
 
+    public void startGame() {
+        gameManager.startGame();
+    }
+
 
     @Override
     public void onAttach(Context context) {
@@ -134,6 +146,7 @@ public class BoardFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
 
     public interface OnFragmentInteractionListener {
         void onGameHasEnded(String winner);

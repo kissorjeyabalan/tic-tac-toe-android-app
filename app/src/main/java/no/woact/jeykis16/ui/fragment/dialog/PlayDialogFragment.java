@@ -6,12 +6,21 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.IOException;
+
 import butterknife.ButterKnife;
 import no.woact.jeykis16.R;
+import no.woact.jeykis16.http.WebHelper;
+import no.woact.jeykis16.http.entity.CatFact;
+import no.woact.jeykis16.http.service.CatFactsService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PlayDialogFragment extends DialogFragment {
 
@@ -33,8 +42,8 @@ public class PlayDialogFragment extends DialogFragment {
         AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
         setCancelable(false);
         adb.setTitle(playerOneName + " vs " + playerTwoName);
-        adb.setMessage("Ready to play?");
-        adb.setPositiveButton("Okay, let's go!", new DialogInterface.OnClickListener() {
+        adb.setMessage(getString(R.string.ready_to_play));
+        adb.setPositiveButton(R.string.play_game, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 interactionListener.startGame();
@@ -43,7 +52,6 @@ public class PlayDialogFragment extends DialogFragment {
         adb.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //TODO: stuff
                 getActivity().finish();
             }
         });

@@ -15,14 +15,11 @@ public interface PlayerDao {
     @Query("SELECT * FROM player")
     List<Player> getAll();
 
-    @Query("SELECT * FROM player ORDER BY wins DESC")
+    @Query("SELECT * FROM player WHERE wins > 0 ORDER BY wins DESC")
     List<Player> getAllSortedByWinsDesc();
 
     @Query("SELECT * FROM player WHERE username LIKE :userName LIMIT 1")
     Player findByName(String userName);
-
-    @Insert
-    void insertAll(Player... players);
 
     @Insert
     void insert(Player player);
@@ -30,6 +27,4 @@ public interface PlayerDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updatePlayers(Player... players);
 
-    @Update
-    void updatePlayer(Player player);
 }

@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import no.woact.jeykis16.R;
 import no.woact.jeykis16.db.entity.Player;
